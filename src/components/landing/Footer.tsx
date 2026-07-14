@@ -6,7 +6,8 @@ import { useLanguage } from "@/contexts/LanguageContext"
 
 const footerLinks = [
   { key: "github", href: "https://github.com" },
-  { key: "team", href: "#about" },
+  { key: "team", href: "#home" },
+  { key: "pitchDeck", href: "#roadmap" },
   { key: "contact", href: "mailto:team@nanflow.ai" },
 ] as const
 
@@ -18,7 +19,7 @@ export default function Footer() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-900/15 to-transparent" />
 
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-8 rounded-[2rem] bg-[#F8FAFC]/78 p-6 shadow-sm ring-1 ring-gray-950/5 backdrop-blur sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+        <div className="scroll-fade-up flex flex-col gap-8 rounded-[2rem] bg-[#F8FAFC]/78 p-6 shadow-sm ring-1 ring-gray-950/5 backdrop-blur sm:p-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-md">
             <div className="flex items-center gap-3">
               <span className="flex size-10 items-center justify-center rounded-xl bg-[#0F766E] text-white shadow-[0_14px_32px_rgba(15,118,110,0.22)]">

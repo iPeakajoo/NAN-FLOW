@@ -26,7 +26,7 @@ export default function PersonaPreview() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_18%,rgba(16,185,129,0.14),transparent_28%),radial-gradient(circle_at_82%_24%,rgba(15,118,110,0.10),transparent_30%),linear-gradient(180deg,#F8FAFC_0%,#ffffff_52%,#F8FAFC_100%)]" />
 
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="scroll-fade-up mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center rounded-full border border-emerald-900/10 bg-white/75 px-3 py-1.5 text-sm font-semibold text-[#0F766E] shadow-sm backdrop-blur">
             {t.persona.badge}
           </div>
@@ -45,7 +45,7 @@ export default function PersonaPreview() {
           {t.persona.cards.map((persona, index) => (
             <Card
               key={persona.title}
-              className={`group relative overflow-hidden rounded-2xl border-gray-100 bg-gradient-to-br ${personaGradients[index]} shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl`}
+              className={`scroll-fade-up group relative overflow-hidden rounded-2xl border-gray-100 bg-gradient-to-br ${personaGradients[index]} shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl`}
             >
               <div className="absolute -right-16 -top-16 size-44 rounded-full bg-[#10B981]/16 blur-3xl transition-transform duration-500 group-hover:scale-125" />
               <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#0F766E,#10B981,#14b8a6)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -88,7 +88,7 @@ export default function PersonaPreview() {
           ))}
         </div>
 
-        <div className="mx-auto mt-16 max-w-3xl text-center">
+        <div className="scroll-fade-up mx-auto mt-16 max-w-3xl text-center">
           <h3 className="text-3xl font-bold tracking-tight text-gray-950 sm:text-4xl">
             {t.persona.bottomTitle}
             <span className="block text-[#0F766E]">

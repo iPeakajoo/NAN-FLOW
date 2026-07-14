@@ -25,11 +25,11 @@ export default function DashboardPreview() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#F8FAFC] px-5 py-24 sm:px-6 lg:px-8">
+    <section id="dashboard" className="relative isolate overflow-hidden bg-[#F8FAFC] px-5 py-24 sm:px-6 lg:px-8">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.14),transparent_28%),radial-gradient(circle_at_84%_70%,rgba(15,118,110,0.11),transparent_30%),linear-gradient(180deg,#ffffff_0%,#F8FAFC_52%,#ffffff_100%)]" />
 
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="scroll-fade-up mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-white/75 px-3 py-1.5 text-sm font-semibold text-[#0F766E] shadow-sm backdrop-blur">
             <Sparkles className="size-4" />
             {t.dashboardPreview.badge}
@@ -45,7 +45,7 @@ export default function DashboardPreview() {
           </p>
         </div>
 
-        <div className="mx-auto mt-14 max-w-6xl rounded-[2rem] bg-gray-950 p-2 shadow-[0_36px_120px_rgba(15,23,42,0.24)]">
+        <div className="scroll-fade-up mx-auto mt-14 max-w-6xl rounded-[2rem] bg-gray-950 p-2 shadow-[0_36px_120px_rgba(15,23,42,0.24)]">
           <div className="overflow-hidden rounded-[1.65rem] border border-white/70 bg-white/88 p-4 shadow-inner backdrop-blur-xl sm:p-5 lg:p-6">
             <div className="flex flex-col gap-4 border-b border-gray-100 pb-5 sm:flex-row sm:items-center sm:justify-between">
               <div>

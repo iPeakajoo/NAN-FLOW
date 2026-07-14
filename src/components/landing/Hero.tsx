@@ -21,14 +21,14 @@ export default function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section id="about" className="relative isolate min-h-screen overflow-hidden bg-[#F8FAFC]">
+    <section id="home" className="relative isolate min-h-screen overflow-hidden bg-[#F8FAFC]">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_12%,rgba(16,185,129,0.20),transparent_30%),radial-gradient(circle_at_88%_16%,rgba(15,118,110,0.18),transparent_28%),linear-gradient(180deg,#ffffff_0%,#F8FAFC_72%,#ecfdf5_100%)]" />
       <div className="absolute left-1/2 top-0 -z-10 h-[38rem] w-[72rem] -translate-x-1/2 rounded-full bg-[linear-gradient(90deg,rgba(15,118,110,0.10),rgba(16,185,129,0.14),rgba(20,184,166,0.08))] blur-3xl" />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-56 bg-[linear-gradient(180deg,transparent,rgba(248,250,252,0.96))]" />
 
       <div className="mx-auto grid min-h-screen w-full max-w-[calc(100vw-2.5rem)] min-w-0 items-center gap-14 px-0 py-24 sm:max-w-7xl sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-28">
         <div className="w-full max-w-[calc(100vw-2.5rem)] min-w-0 sm:max-w-4xl">
-          <div className="inline-flex w-full max-w-80 items-center gap-2 rounded-full border border-emerald-900/10 bg-white/75 px-3 py-1.5 text-sm font-semibold text-[#0F766E] shadow-[0_10px_28px_rgba(15,23,42,0.06)] backdrop-blur-xl sm:w-auto sm:max-w-full">
+          <div className="scroll-fade-in inline-flex w-full max-w-80 items-center gap-2 rounded-full border border-emerald-900/10 bg-white/75 px-3 py-1.5 text-sm font-semibold text-[#0F766E] shadow-[0_10px_28px_rgba(15,23,42,0.06)] backdrop-blur-xl sm:w-auto sm:max-w-full">
             <span className="flex size-6 items-center justify-center rounded-full bg-emerald-50">
               <Leaf className="size-3.5 text-[#10B981]" />
             </span>
@@ -43,7 +43,7 @@ export default function Hero() {
           <p className="mt-3 text-sm font-semibold text-gray-500">
             {t.hero.platform}
           </p>
-          <h1 className="mt-4 max-w-5xl text-5xl font-bold leading-[0.98] tracking-tight text-gray-950 sm:text-7xl lg:text-8xl">
+          <h1 className="scroll-fade-up mt-4 max-w-5xl text-5xl font-bold leading-[0.98] tracking-tight text-gray-950 sm:text-7xl lg:text-8xl">
             <span className="block">{t.hero.title[0]}</span>
             <span className="block">{t.hero.title[1]}</span>
             <span className="block bg-[linear-gradient(90deg,#0F766E,#10B981,#14b8a6)] bg-clip-text text-transparent">
@@ -84,8 +84,8 @@ export default function Hero() {
 
         <div className="relative mx-auto w-full max-w-[calc(100vw-2.5rem)] min-w-0 overflow-hidden sm:max-w-xl lg:max-w-none">
           <div className="absolute -inset-8 -z-10 rounded-full bg-[#10B981]/20 blur-3xl" />
-          <div className="overflow-hidden rounded-[2rem] bg-white/70 p-3 shadow-[0_30px_100px_rgba(15,23,42,0.16)] ring-1 ring-white/80 backdrop-blur-2xl">
-            <div className="relative min-h-[520px] overflow-hidden rounded-[1.5rem] bg-[linear-gradient(160deg,#ecfdf5_0%,#f8fafc_45%,#d1fae5_100%)]">
+          <div className="scroll-fade-up overflow-hidden rounded-[2rem] bg-white/70 p-3 shadow-[0_30px_100px_rgba(15,23,42,0.16)] ring-1 ring-white/80 backdrop-blur-2xl">
+            <div className="relative min-h-[620px] overflow-hidden rounded-[1.5rem] bg-[linear-gradient(160deg,#ecfdf5_0%,#f8fafc_45%,#d1fae5_100%)]">
               <div className="absolute inset-x-0 bottom-0 h-64 bg-[linear-gradient(180deg,transparent,rgba(15,118,110,0.12))]" />
               <div className="absolute bottom-24 left-0 h-48 w-full bg-[#0F766E]/18 [clip-path:polygon(0_64%,18%_42%,36%_58%,54%_22%,74%_52%,100%_18%,100%_100%,0_100%)]" />
               <div className="absolute bottom-12 left-0 h-44 w-full bg-[#0F766E]/30 [clip-path:polygon(0_54%,18%_24%,34%_44%,52%_10%,72%_42%,100%_26%,100%_100%,0_100%)]" />
@@ -153,6 +153,22 @@ export default function Hero() {
                   </span>
                 </div>
 
+                <div className="mt-5 grid grid-cols-2 gap-2">
+                  {t.hero.dashboardMini.map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-xl bg-white/8 p-3 ring-1 ring-white/10"
+                    >
+                      <p className="text-[11px] font-semibold uppercase text-emerald-100/56">
+                        {item.label}
+                      </p>
+                      <p className="mt-1 truncate text-sm font-bold text-white">
+                        {item.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
                 <div className="mt-5 grid gap-2 sm:grid-cols-4">
                   {t.hero.routeStops.map((stop, index) => (
                     <div key={stop} className="flex items-center gap-2">
@@ -207,7 +223,7 @@ export default function Hero() {
                 })}
               </div>
 
-              <div className="absolute left-7 top-44 hidden w-52 rounded-2xl bg-white/72 p-3 shadow-[0_14px_32px_rgba(15,23,42,0.08)] ring-1 ring-gray-950/5 backdrop-blur-xl sm:block">
+              <div className="absolute left-7 top-44 hidden w-52 rounded-2xl bg-white/72 p-3 shadow-[0_14px_32px_rgba(15,23,42,0.08)] ring-1 ring-gray-950/5 backdrop-blur-xl sm:block lg:hidden">
                 <div className="flex items-center gap-2 text-xs font-bold text-[#0F766E]">
                   <TrendingUp className="size-4" />
                   {t.hero.matchBadge}

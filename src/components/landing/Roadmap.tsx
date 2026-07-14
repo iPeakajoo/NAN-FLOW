@@ -38,7 +38,7 @@ export default function Roadmap() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_16%,rgba(16,185,129,0.13),transparent_28%),radial-gradient(circle_at_84%_62%,rgba(15,118,110,0.10),transparent_30%),linear-gradient(180deg,#ffffff_0%,#F8FAFC_48%,#ffffff_100%)]" />
 
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="scroll-fade-up mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center rounded-full border border-emerald-900/10 bg-white/75 px-3 py-1.5 text-sm font-semibold text-[#0F766E] shadow-sm backdrop-blur">
             {t.roadmap.badge}
           </div>
@@ -64,7 +64,7 @@ export default function Roadmap() {
               return (
                 <div
                   key={phase.title}
-                  className={`relative grid gap-5 lg:grid-cols-2 ${
+                  className={`scroll-fade-up relative grid gap-5 lg:grid-cols-2 ${
                     isEven ? "" : "lg:[&>*:first-child]:col-start-2"
                   }`}
                 >
@@ -117,7 +117,7 @@ export default function Roadmap() {
           </div>
         </div>
 
-        <Card className="mx-auto mt-16 max-w-5xl overflow-hidden rounded-[2rem] border-gray-100 bg-white/88 shadow-[0_30px_100px_rgba(15,23,42,0.12)] backdrop-blur">
+        <Card className="scroll-fade-up mx-auto mt-16 max-w-5xl overflow-hidden rounded-[2rem] border-gray-100 bg-white/88 shadow-[0_30px_100px_rgba(15,23,42,0.12)] backdrop-blur">
           <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#0F766E,#10B981,#99f6e4)]" />
           <CardContent className="grid gap-8 p-7 sm:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>

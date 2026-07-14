@@ -1,3 +1,5 @@
+"use client"
+
 import {
   AlertTriangle,
   BarChart3,
@@ -9,129 +11,81 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { useLanguage } from "@/contexts/LanguageContext"
 
-const kpis = [
-  {
-    value: "12,548",
-    label: "Tourists",
-    icon: Users,
-  },
-  {
-    value: "84",
-    label: "Areas",
-    icon: MapPinned,
-  },
-  {
-    value: "฿2.4M",
-    label: "Impact",
-    icon: TrendingUp,
-  },
-  {
-    value: "91",
-    label: "Score",
-    icon: Sparkles,
-  },
-]
+const kpiIcons = [Users, MapPinned, TrendingUp, Sparkles]
 
-const mapPoints = [
+const mapPointMeta = [
   {
-    name: "Nan City",
-    label: "High Activity",
     className: "left-[29%] top-[34%]",
     dot: "bg-[#0F766E] shadow-[0_0_0_12px_rgba(15,118,110,0.14),0_0_42px_rgba(15,118,110,0.45)]",
   },
   {
-    name: "Pua",
-    label: "Opportunity Area",
     className: "left-[52%] top-[43%]",
     dot: "bg-[#10B981] shadow-[0_0_0_14px_rgba(16,185,129,0.18),0_0_48px_rgba(16,185,129,0.55)]",
   },
   {
-    name: "Bo Kluea",
-    label: "Growing",
     className: "left-[65%] top-[60%]",
     dot: "bg-emerald-300 shadow-[0_0_0_11px_rgba(110,231,183,0.20),0_0_36px_rgba(16,185,129,0.42)]",
   },
 ]
 
-const insights = [
-  {
-    icon: "🔥",
-    title: "Promote Pua Coffee Route",
-  },
-  {
-    icon: "🌿",
-    title: "Wellness Tourism",
-  },
-  {
-    icon: "🏺",
-    title: "Craft Community",
-  },
-]
-
-const analytics = [
-  {
-    value: "฿2350",
-    label: "Average Spending",
-  },
-  {
-    value: "2.8 days",
-    label: "Average Stay",
-  },
-  {
-    value: "+23%",
-    label: "Community Revenue",
-  },
-]
-
 export default function GovernmentPage() {
+  const { t } = useLanguage()
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#F8FAFC] text-gray-950">
       <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_18%_10%,rgba(16,185,129,0.13),transparent_30%),radial-gradient(circle_at_84%_18%,rgba(15,118,110,0.11),transparent_28%),linear-gradient(180deg,#ffffff_0%,#F8FAFC_52%,#ffffff_100%)]" />
 
       <section className="mx-auto w-full max-w-[calc(100vw-2.5rem)] px-0 py-8 sm:max-w-6xl sm:px-6 lg:px-8">
         <header className="mx-auto max-w-3xl text-center">
-          <div className="mb-8 flex items-center justify-center gap-3">
-            <Link href="/" className="flex items-center gap-3" aria-label="NAN FLOW home">
+          <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
+            <Link href="/" className="flex items-center gap-3" aria-label={t.common.homeAria}>
               <span className="flex size-10 items-center justify-center rounded-xl bg-[#0F766E] text-white shadow-[0_14px_32px_rgba(15,118,110,0.22)]">
                 <Mountain className="size-5" />
               </span>
-              <span className="text-sm font-bold tracking-[0.18em]">NAN FLOW</span>
+              <span className="text-sm font-bold tracking-[0.18em]">
+                {t.common.brand}
+              </span>
             </Link>
+            <LanguageSwitcher />
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-white/78 px-3 py-1.5 text-sm font-semibold text-[#0F766E] shadow-sm backdrop-blur">
               <BarChart3 className="size-4" />
-              Government Dashboard
+              {t.governmentPage.badge}
             </div>
             <Link
               href="/dashboard"
               className="inline-flex h-9 items-center justify-center rounded-full border border-emerald-900/10 bg-white/78 px-3 text-sm font-semibold text-gray-700 shadow-sm backdrop-blur transition-all duration-300 hover:text-[#0F766E]"
             >
-              Traveler<span className="hidden sm:inline">&nbsp;Dashboard</span>
+              {t.governmentPage.travelerDashboard}
             </Link>
           </div>
 
           <h1 className="mt-6 text-3xl font-bold tracking-tight text-gray-950 sm:text-6xl">
-            <span className="block">Nan Tourism</span>
-            <span className="block text-[#0F766E]">Intelligence</span>
+            <span className="block">{t.governmentPage.titleLine1}</span>
+            <span className="block text-[#0F766E]">
+              {t.governmentPage.titleLine2}
+            </span>
           </h1>
           <p className="mx-auto mt-5 max-w-80 text-base leading-8 text-gray-600 sm:max-w-2xl sm:text-lg">
-            AI-powered insights helping government create balanced tourism growth.
+            {t.governmentPage.subtitle}
           </p>
         </header>
 
         <Card className="mt-12 animate-in fade-in slide-in-from-bottom-2 rounded-[2rem] border-gray-100 bg-white/88 shadow-[0_26px_90px_rgba(15,23,42,0.10)] backdrop-blur">
           <CardContent className="grid gap-4 p-5 sm:grid-cols-2 lg:grid-cols-4 lg:p-6">
-            {kpis.map((kpi) => {
-              const Icon = kpi.icon
+            {t.governmentPage.kpis.map((kpi, index) => {
+              const Icon = kpiIcons[index]
 
               return (
                 <div
@@ -157,7 +111,7 @@ export default function GovernmentPage() {
           <div className="h-1.5 bg-[linear-gradient(90deg,#0F766E,#10B981,#99f6e4)]" />
           <CardHeader className="p-6 text-center sm:p-8">
             <CardTitle className="text-2xl font-bold tracking-tight sm:text-3xl">
-              Tourism Activity Map
+              {t.governmentPage.mapTitle}
             </CardTitle>
           </CardHeader>
           <CardContent className="px-5 pb-5 sm:px-8 sm:pb-8">
@@ -166,13 +120,13 @@ export default function GovernmentPage() {
               <div className="absolute left-[24%] top-[18%] h-[280px] w-[280px] rotate-[-14deg] rounded-full border border-[#0F766E]/10" />
               <div className="absolute left-[43%] top-[25%] h-[240px] w-[200px] rotate-[18deg] rounded-full border border-[#10B981]/16" />
 
-              {mapPoints.map((point) => (
+              {t.governmentPage.mapPoints.map((point, index) => (
                 <div
                   key={point.name}
-                  className={`absolute ${point.className} group/map-point`}
+                  className={`absolute ${mapPointMeta[index].className} group/map-point`}
                 >
                   <span
-                    className={`absolute left-1 top-1 size-3 animate-pulse rounded-full ${point.dot}`}
+                    className={`absolute left-1 top-1 size-3 animate-pulse rounded-full ${mapPointMeta[index].dot}`}
                   />
                   <div className="ml-8 min-w-36 rounded-2xl bg-white/90 px-4 py-3 shadow-lg ring-1 ring-gray-950/5 backdrop-blur transition-all duration-300 group-hover/map-point:-translate-y-1">
                     <p className="font-bold text-gray-950">{point.name}</p>
@@ -189,11 +143,11 @@ export default function GovernmentPage() {
         <Card className="mt-6 animate-in fade-in slide-in-from-bottom-2 rounded-[2rem] border-gray-100 bg-white/88 shadow-[0_26px_90px_rgba(15,23,42,0.10)] backdrop-blur">
           <CardHeader className="p-6 text-center sm:p-8">
             <CardTitle className="text-2xl font-bold tracking-tight sm:text-3xl">
-              AI Opportunity Insights
+              {t.governmentPage.insightsTitle}
             </CardTitle>
           </CardHeader>
           <CardContent className="grid gap-3 px-5 pb-5 sm:px-8 sm:pb-8 lg:grid-cols-3">
-            {insights.map((insight) => (
+            {t.governmentPage.insights.map((insight) => (
               <div
                 key={insight.title}
                 className="rounded-2xl bg-[#F8FAFC] p-5 text-center ring-1 ring-gray-950/5 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg"
@@ -211,7 +165,7 @@ export default function GovernmentPage() {
 
         <Card className="mt-6 animate-in fade-in slide-in-from-bottom-2 rounded-[2rem] border-gray-100 bg-white/88 shadow-[0_26px_90px_rgba(15,23,42,0.10)] backdrop-blur">
           <CardContent className="grid gap-4 p-5 sm:grid-cols-3 sm:p-6">
-            {analytics.map((metric) => (
+            {t.governmentPage.analytics.map((metric) => (
               <div
                 key={metric.label}
                 className="rounded-2xl bg-[#F8FAFC] p-5 text-center ring-1 ring-gray-950/5 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg"
@@ -236,10 +190,10 @@ export default function GovernmentPage() {
               </span>
               <div>
                 <h2 className="text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl">
-                  AI Opportunity Alert
+                  {t.governmentPage.alertTitle}
                 </h2>
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-gray-600">
-                  Pua district has high potential during Green Season.
+                  {t.governmentPage.alertText}
                 </p>
               </div>
             </div>

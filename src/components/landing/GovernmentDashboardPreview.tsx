@@ -23,6 +23,7 @@ import { useLanguage } from "@/contexts/LanguageContext"
 const kpiIcons = [Users, MapPinned, Coins, TrendingUp]
 
 const mapPointPositions = [
+  "left-[28%] top-[34%]",
   "left-[46%] top-[26%]",
   "left-[64%] top-[38%]",
   "left-[36%] top-[50%]",
@@ -37,7 +38,7 @@ export default function GovernmentDashboardPreview() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_16%,rgba(15,118,110,0.13),transparent_28%),radial-gradient(circle_at_84%_18%,rgba(16,185,129,0.12),transparent_26%),linear-gradient(180deg,#ffffff_0%,#F8FAFC_48%,#ffffff_100%)]" />
 
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="scroll-fade-up mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-white/75 px-3 py-1.5 text-sm font-semibold text-[#0F766E] shadow-sm backdrop-blur">
             <Sparkles className="size-4" />
             {t.governmentPreview.badge}
@@ -53,7 +54,7 @@ export default function GovernmentDashboardPreview() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="scroll-fade-up mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {t.governmentPreview.kpis.map((kpi, index) => {
             const Icon = kpiIcons[index]
 
@@ -83,7 +84,7 @@ export default function GovernmentDashboardPreview() {
           })}
         </div>
 
-        <div className="mt-5 grid gap-5 lg:grid-cols-[2fr_1fr]">
+        <div className="scroll-fade-up mt-5 grid gap-5 lg:grid-cols-[2fr_1fr]">
           <Card className="relative overflow-hidden rounded-2xl border-gray-100 bg-white/86 shadow-lg backdrop-blur">
             <div className="absolute right-8 top-8 z-20 hidden w-60 rounded-2xl border border-amber-200/70 bg-white/88 p-4 shadow-[0_22px_70px_rgba(15,23,42,0.16)] backdrop-blur lg:block">
               <div className="flex items-center gap-2 text-sm font-bold text-amber-700">
@@ -197,7 +198,13 @@ export default function GovernmentDashboardPreview() {
                       </span>
                       <div>
                         <p className="font-bold text-gray-950">{suggestion.title}</p>
-                        <p className="mt-1 text-sm font-semibold text-[#0F766E]">
+                        <p
+                          className={`mt-1 inline-flex rounded-full px-2.5 py-1 text-xs font-bold ${
+                            suggestion.label === "HIGH"
+                              ? "bg-emerald-50 text-[#0F766E] ring-1 ring-emerald-900/10"
+                              : "text-[#0F766E]"
+                          }`}
+                        >
                           {suggestion.label}
                         </p>
                       </div>

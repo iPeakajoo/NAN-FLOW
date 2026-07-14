@@ -12,30 +12,30 @@ import PersonaPreview from "@/components/landing/PersonaPreview"
 import Problem from "@/components/landing/Problem"
 import Roadmap from "@/components/landing/Roadmap"
 import Solution from "@/components/landing/Solution"
-import { LanguageProvider, useLanguage } from "@/contexts/LanguageContext"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 const navItems = [
-  { key: "about", href: "#about" },
-  { key: "features", href: "#features" },
+  { key: "home", href: "#home" },
+  { key: "problem", href: "#problem" },
+  { key: "solution", href: "#solution" },
+  { key: "dashboard", href: "#dashboard" },
   { key: "government", href: "#government" },
   { key: "roadmap", href: "#roadmap" },
 ] as const
 
 export default function NanFlowLanding() {
   return (
-    <LanguageProvider>
-      <main className="min-h-screen overflow-hidden bg-[#F8FAFC] text-gray-950">
-        <Navbar />
-        <Hero />
-        <Problem />
-        <Solution />
-        <PersonaPreview />
-        <DashboardPreview />
-        <GovernmentDashboardPreview />
-        <Roadmap />
-        <Footer />
-      </main>
-    </LanguageProvider>
+    <main className="min-h-screen overflow-hidden bg-[#F8FAFC] text-gray-950">
+      <Navbar />
+      <Hero />
+      <Problem />
+      <Solution />
+      <PersonaPreview />
+      <DashboardPreview />
+      <GovernmentDashboardPreview />
+      <Roadmap />
+      <Footer />
+    </main>
   )
 }
 
@@ -54,7 +54,7 @@ function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) => (
             <Link
               key={item.key}

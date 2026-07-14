@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react"
 
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -20,61 +21,46 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { useLanguage } from "@/contexts/LanguageContext"
 
-const personas = [
+const personaMeta = [
   {
     id: "active",
     icon: Mountain,
-    title: "Active Explorer",
-    shortTitle: "Active",
-    description: ["Adventure", "Hiking", "Cycling", "Nature Quest"],
     gradient: "from-emerald-50 via-white to-teal-50",
   },
   {
     id: "lifestyle",
     icon: Coffee,
-    title: "Lifestyle Explorer",
-    shortTitle: "Lifestyle",
-    description: ["Cafe", "Food", "Craft", "Community"],
     gradient: "from-lime-50 via-white to-emerald-50",
   },
   {
     id: "nomad",
     icon: Laptop,
-    title: "Digital Nomad",
-    shortTitle: "Nomad",
-    description: ["Work", "Coffee", "Long Stay", "Slow Life"],
     gradient: "from-cyan-50 via-white to-emerald-50",
   },
   {
     id: "wellness",
     icon: Leaf,
-    title: "Wellness Escape",
-    shortTitle: "Wellness",
-    description: ["Forest", "Relax", "Healing", "Mindfulness"],
     gradient: "from-green-50 via-white to-teal-50",
   },
-]
-
-const preferences = [
-  "☔ Green Season",
-  "🌿 Nature",
-  "☕ Local Cafe",
-  "🍜 Food",
-  "📷 Photography",
-  "🏃 Activity",
-]
-
-const analyzingSignals = ["Weather", "Season", "Community", "Your Travel Style"]
+] as const
 
 export default function OnboardingPage() {
+  const { t } = useLanguage()
   const [step, setStep] = useState(1)
   const [selectedPersonaId, setSelectedPersonaId] = useState("active")
-  const [selectedPreferences, setSelectedPreferences] = useState<string[]>([
-    "☔ Green Season",
-    "🌿 Nature",
+  const [selectedPreferenceIndexes, setSelectedPreferenceIndexes] = useState<number[]>([
+    0,
+    1,
   ])
   const [isGenerated, setIsGenerated] = useState(false)
+
+  const personas = t.onboardingPage.personas.map((persona, index) => ({
+    ...persona,
+    icon: personaMeta[index].icon,
+    gradient: personaMeta[index].gradient,
+  }))
 
   const selectedPersona =
     personas.find((persona) => persona.id === selectedPersonaId) ?? personas[0]
@@ -87,7 +73,7 @@ export default function OnboardingPage() {
     }, 1800)
 
     return () => window.clearTimeout(timer)
-  }, [step, selectedPersonaId, selectedPreferences])
+  }, [step, selectedPersonaId, selectedPreferenceIndexes])
 
   function moveToStep(nextStep: number) {
     if (nextStep === 3) {
@@ -97,11 +83,11 @@ export default function OnboardingPage() {
     setStep(nextStep)
   }
 
-  function togglePreference(preference: string) {
-    setSelectedPreferences((current) =>
-      current.includes(preference)
-        ? current.filter((item) => item !== preference)
-        : [...current, preference],
+  function togglePreference(preferenceIndex: number) {
+    setSelectedPreferenceIndexes((current) =>
+      current.includes(preferenceIndex)
+        ? current.filter((item) => item !== preferenceIndex)
+        : [...current, preferenceIndex],
     )
   }
 
@@ -111,26 +97,27 @@ export default function OnboardingPage() {
       <div className="absolute left-1/2 top-20 h-72 w-72 -translate-x-1/2 rounded-full bg-[#10B981]/10 blur-3xl" />
 
       <section className="relative z-10 mx-auto flex w-full max-w-[calc(100vw-2.5rem)] flex-col sm:max-w-5xl">
-        <header className="flex items-center justify-center py-3">
-          <Link href="/" className="flex items-center gap-3" aria-label="NAN FLOW home">
+        <header className="flex items-center justify-between py-3">
+          <Link href="/" className="flex items-center gap-3" aria-label={t.common.homeAria}>
             <span className="flex size-10 items-center justify-center rounded-xl bg-[#0F766E] text-white shadow-[0_14px_32px_rgba(15,118,110,0.22)]">
               <Mountain className="size-5" />
             </span>
-            <span className="text-sm font-bold tracking-[0.18em]">NAN FLOW</span>
+            <span className="text-sm font-bold tracking-[0.18em]">
+              {t.common.brand}
+            </span>
           </Link>
+          <LanguageSwitcher />
         </header>
 
         <div className="mx-auto mt-8 w-full max-w-3xl">
           <div className="rounded-[2rem] border border-white/70 bg-white/78 p-4 shadow-[0_30px_100px_rgba(15,23,42,0.10)] backdrop-blur-2xl sm:p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm font-bold text-[#0F766E]">Step {step} / 3</p>
+                <p className="text-sm font-bold text-[#0F766E]">
+                  {t.onboardingPage.step} {step} / 3
+                </p>
                 <p className="mt-1 text-lg font-bold tracking-tight text-gray-950">
-                  {step === 1
-                    ? "Choose Your Travel Style"
-                    : step === 2
-                      ? "Travel Preference"
-                      : "AI Generating Experience"}
+                  {t.onboardingPage.stepTitles[step - 1]}
                 </p>
               </div>
 
@@ -152,22 +139,23 @@ export default function OnboardingPage() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-white/75 px-3 py-1.5 text-sm font-semibold text-[#0F766E] shadow-sm backdrop-blur">
               <Sparkles className="size-4" />
-              AI Travel Personality
+              {t.onboardingPage.badge}
             </div>
             <h1 className="mt-6 text-3xl font-bold tracking-tight text-gray-950 sm:text-6xl">
-              <span className="block">Find Your Perfect</span>
-              <span className="block text-[#0F766E]">Nan Experience</span>
+              <span className="block">{t.onboardingPage.titleLine1}</span>
+              <span className="block text-[#0F766E]">
+                {t.onboardingPage.titleLine2}
+              </span>
             </h1>
             <p className="mx-auto mt-5 max-w-80 text-base leading-8 text-gray-600 sm:max-w-2xl sm:text-lg">
-              Tell NAN FLOW what kind of journey you want. Our AI will create a
-              personalized route.
+              {t.onboardingPage.subtitle}
             </p>
           </div>
 
           {step === 1 ? (
             <div className="mx-auto mt-10 max-w-4xl">
               <p className="text-center text-lg font-bold text-gray-950">
-                Choose your style
+                {t.onboardingPage.chooseStyle}
               </p>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -231,7 +219,7 @@ export default function OnboardingPage() {
                   onClick={() => moveToStep(2)}
                   className="h-12 rounded-xl bg-[#0F766E] px-7 text-base font-semibold text-white shadow-[0_20px_48px_rgba(15,118,110,0.25)] hover:bg-[#0b625c]"
                 >
-                  Continue Journey
+                  {t.onboardingPage.continueJourney}
                   <ArrowRight className="size-4" />
                 </Button>
               </div>
@@ -243,23 +231,23 @@ export default function OnboardingPage() {
               <Card className="rounded-[2rem] border-gray-100 bg-white/86 shadow-[0_30px_100px_rgba(15,23,42,0.10)] backdrop-blur">
                 <CardHeader className="p-6 text-center sm:p-8">
                   <CardTitle className="text-3xl font-bold tracking-tight text-gray-950">
-                    What should AI understand?
+                    {t.onboardingPage.preferencesTitle}
                   </CardTitle>
                   <p className="mt-3 text-base leading-7 text-gray-600">
-                    Select the signals that matter most for your Nan journey.
+                    {t.onboardingPage.preferencesSubtitle}
                   </p>
                 </CardHeader>
                 <CardContent className="px-6 pb-6 sm:px-8 sm:pb-8">
                   <div className="flex flex-wrap justify-center gap-3">
-                    {preferences.map((preference) => {
-                      const isSelected = selectedPreferences.includes(preference)
+                    {t.onboardingPage.preferences.map((preference, index) => {
+                      const isSelected = selectedPreferenceIndexes.includes(index)
 
                       return (
                         <Button
                           key={preference}
                           type="button"
                           variant="outline"
-                          onClick={() => togglePreference(preference)}
+                          onClick={() => togglePreference(index)}
                           className={`h-12 rounded-full px-5 text-base font-semibold transition-all duration-300 ${
                             isSelected
                               ? "scale-105 border-[#10B981] bg-emerald-50 text-[#0F766E] shadow-[0_14px_40px_rgba(16,185,129,0.16)]"
@@ -275,14 +263,13 @@ export default function OnboardingPage() {
 
                   <div className="mt-8 rounded-2xl bg-[#F8FAFC] p-5 ring-1 ring-gray-950/5">
                     <p className="text-sm font-bold text-[#0F766E]">
-                      Selected persona
+                      {t.onboardingPage.selectedPersona}
                     </p>
                     <p className="mt-2 text-2xl font-bold text-gray-950">
                       {selectedPersona.title}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-gray-600">
-                      NAN FLOW will combine your style with season, weather and
-                      community opportunity.
+                      {t.onboardingPage.selectedPersonaText}
                     </p>
                   </div>
 
@@ -292,13 +279,13 @@ export default function OnboardingPage() {
                       onClick={() => moveToStep(1)}
                       className="h-12 rounded-xl border-emerald-900/10 bg-white/80 px-6 text-base font-semibold text-gray-950 shadow-sm hover:text-[#0F766E]"
                     >
-                      Back
+                      {t.onboardingPage.back}
                     </Button>
                     <Button
                       onClick={() => moveToStep(3)}
                       className="h-12 rounded-xl bg-[#0F766E] px-7 text-base font-semibold text-white shadow-[0_20px_48px_rgba(15,118,110,0.25)] hover:bg-[#0b625c]"
                     >
-                      Continue Journey
+                      {t.onboardingPage.continueJourney}
                       <ArrowRight className="size-4" />
                     </Button>
                   </div>
@@ -326,16 +313,15 @@ export default function OnboardingPage() {
 
                   <h2 className="mt-7 text-3xl font-bold tracking-tight text-gray-950 sm:text-4xl">
                     {isGenerated
-                      ? "Your AI journey is ready."
-                      : "AI is understanding your travel personality."}
+                      ? t.onboardingPage.generatedTitle
+                      : t.onboardingPage.generatingTitle}
                   </h2>
                   <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-gray-600">
-                    NAN FLOW is turning your preferences into a route that
-                    balances traveler joy and community impact.
+                    {t.onboardingPage.generatingSubtitle}
                   </p>
 
                   <div className="mx-auto mt-8 grid max-w-xl gap-3 sm:grid-cols-2">
-                    {analyzingSignals.map((signal, index) => (
+                    {t.onboardingPage.analyzingSignals.map((signal, index) => (
                       <div
                         key={signal}
                         className="flex items-center gap-3 rounded-2xl bg-[#F8FAFC] p-4 text-left ring-1 ring-gray-950/5"
@@ -355,7 +341,7 @@ export default function OnboardingPage() {
                         </span>
                         <div>
                           <p className="text-xs font-bold uppercase text-[#0F766E]">
-                            Analyzing
+                            {t.onboardingPage.analyzing}
                           </p>
                           <p className="font-bold text-gray-950">{signal}</p>
                         </div>
@@ -365,15 +351,18 @@ export default function OnboardingPage() {
 
                   <div className="mx-auto mt-8 max-w-xl rounded-2xl bg-gray-950 p-5 text-left text-white shadow-[0_24px_70px_rgba(15,23,42,0.22)]">
                     <p className="text-sm font-semibold text-emerald-100/76">
-                      AI matched
+                      {t.onboardingPage.aiMatched}
                     </p>
                     <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                       <div>
                         <p className="text-3xl font-bold tracking-tight">
-                          {selectedPersona.shortTitle} Traveler
+                          {selectedPersona.shortTitle}{" "}
+                          {t.onboardingPage.travelerSuffix}
                         </p>
                         <p className="mt-2 text-sm text-white/62">
-                          {selectedPreferences.join(" • ")}
+                          {selectedPreferenceIndexes
+                            .map((index) => t.onboardingPage.preferences[index])
+                            .join(" • ")}
                         </p>
                       </div>
                       <p className="text-4xl font-bold text-[#10B981]">96%</p>
@@ -386,14 +375,14 @@ export default function OnboardingPage() {
                       onClick={() => moveToStep(2)}
                       className="h-12 rounded-xl border-emerald-900/10 bg-white/80 px-6 text-base font-semibold text-gray-950 shadow-sm hover:text-[#0F766E]"
                     >
-                      Back
+                      {t.onboardingPage.back}
                     </Button>
                     {isGenerated ? (
                       <Link
                         href="/dashboard"
                         className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#0F766E] px-7 text-base font-semibold text-white shadow-[0_20px_48px_rgba(15,118,110,0.25)] transition-all duration-300 hover:bg-[#0b625c]"
                       >
-                        Explore My Journey
+                        {t.onboardingPage.exploreJourney}
                         <ArrowRight className="size-4" />
                       </Link>
                     ) : (
@@ -401,7 +390,7 @@ export default function OnboardingPage() {
                         disabled
                         className="h-12 rounded-xl bg-[#0F766E] px-7 text-base font-semibold text-white shadow-[0_20px_48px_rgba(15,118,110,0.25)]"
                       >
-                        AI Thinking
+                        {t.onboardingPage.aiThinking}
                         <Loader2 className="size-4 animate-spin" />
                       </Button>
                     )}

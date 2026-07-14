@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Building2, ChevronDown, CircleCheckBig, Compass, Globe2, Leaf, MapPinned, ShieldCheck, Sparkles, TrendingUp, Users, Waves } from "lucide-react";
+import { ArrowRight, BarChart3, Building2, ChevronDown, CircleCheckBig, Compass, Leaf, MapPinned, ShieldCheck, Sparkles, TrendingUp, Users, Waves } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
@@ -49,15 +49,21 @@ const personas = [
 
 const dashboardMetrics = [
   {
-    title: "Community Visits",
+    title: "Community Visit",
     value: "18.4K",
     detail: "+24% week over week",
     icon: Users,
   },
   {
-    title: "Opportunity Score",
+    title: "Quest Completion",
+    value: "72%",
+    detail: "Travelers finishing curated routes",
+    icon: CircleCheckBig,
+  },
+  {
+    title: "Green Season Score",
     value: "87",
-    detail: "High potential zones identified",
+    detail: "Distribution health across low season",
     icon: BarChart3,
   },
   {
@@ -66,19 +72,13 @@ const dashboardMetrics = [
     detail: "Estimated local spending uplift",
     icon: TrendingUp,
   },
-  {
-    title: "Quest Completion",
-    value: "72%",
-    detail: "Travelers finishing curated routes",
-    icon: CircleCheckBig,
-  },
 ];
 
 const roadmapPhases = [
   {
     phase: "Phase 1",
-    title: "Tourist App",
-    description: "Launch the traveler experience with persona onboarding and quests.",
+    title: "Tourist Experience",
+    description: "Launch the traveler-facing journey with persona onboarding and quests.",
     icon: Compass,
   },
   {
@@ -92,12 +92,6 @@ const roadmapPhases = [
     title: "Government Dashboard",
     description: "Surface live distribution, impact, and seasonal tourism patterns.",
     icon: ShieldCheck,
-  },
-  {
-    phase: "Phase 4",
-    title: "CITY FLOW Platform",
-    description: "Scale the model into a city-wide sustainable tourism operating layer.",
-    icon: Globe2,
   },
 ];
 
@@ -156,7 +150,7 @@ export default function Home() {
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
                 <Button variant="outline" className="h-12 rounded-full border-emerald-900/15 bg-white px-6 text-sm font-semibold text-slate-900 transition-all duration-300 hover:scale-105 hover:border-emerald-900/25 hover:bg-emerald-50">
-                  View Dashboard
+                  Government Dashboard
                 </Button>
               </div>
 

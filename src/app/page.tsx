@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Building2, ChevronDown, CircleCheckBig, Compass, Leaf, MapPinned, ShieldCheck, Sparkles, TrendingUp, Users, Waves } from "lucide-react";
+import { ArrowRight, Bot, ChevronDown, CloudSun, Coffee, Landmark, Leaf, MapPin, MapPinned, ShieldCheck, Sparkles, Store, UserRound, Waves, Award, Route, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
@@ -19,79 +19,115 @@ const problemCards = [
 ];
 
 const solutionSteps = [
-  "Choose Persona",
-  "AI generates personalized quests",
-  "Support local communities while tracking tourism impact",
+  "Persona selection",
+  "AI recommendation",
+  "Dynamic Quest",
+  "Tourist Dashboard",
+  "Government Dashboard",
 ];
 
 const personas = [
   {
     icon: "🏃",
-    title: "Active Explorer",
-    description: "Adventure-first routes with movement, viewpoints, and trail moments.",
+    title: "Active",
+    description: "Adventure, running, and nature-led routes for high-energy travelers.",
   },
   {
     icon: "☕",
     title: "Lifestyle",
-    description: "Slow itineraries for cafes, crafts, and premium local experiences.",
+    description: "Cafe, photography, and craft experiences with a softer pace.",
   },
   {
     icon: "💻",
-    title: "Digital Nomad",
-    description: "Balanced work-and-travel quests built around connectivity and comfort.",
+    title: "Focus",
+    description: "Digital nomad-friendly quests with coffee, coworking, and focus time.",
   },
   {
     icon: "🌿",
     title: "Wellness",
-    description: "Restorative journeys focused on nature, breathing, and renewal.",
+    description: "Family, health, and relaxation journeys designed to restore energy.",
   },
 ];
 
-const dashboardMetrics = [
+const benefits = [
   {
-    title: "Community Visit",
-    value: "18.4K",
-    detail: "+24% week over week",
+    title: "Tourists",
+    description: "Discover personalized community quests, better local experiences, and a more meaningful trip.",
+    icon: UserRound,
+  },
+  {
+    title: "Communities",
+    description: "Receive more visitors during low season and unlock new income opportunities.",
+    icon: Store,
+  },
+  {
+    title: "Government",
+    description: "See tourism distribution clearly with mock KPI insights and seasonal balance indicators.",
+    icon: Landmark,
+  },
+];
+
+const challengeCards = [
+  {
+    title: "Tourist Crowding",
+    description: "Visitors cluster in a few famous destinations, leaving the wider province underused.",
+    icon: MapPinned,
+  },
+  {
+    title: "Low Season",
+    description: "When the weather turns, travel demand drops and communities lose momentum.",
+    icon: Leaf,
+  },
+  {
+    title: "Uneven Community Income",
+    description: "Some areas benefit from tourism while others see little economic spillover.",
+    icon: Landmark,
+  },
+];
+
+const journeySteps = [
+  {
+    title: "Choose Persona",
+    description: "Pick a traveler style that reflects intent, pace, and interests.",
     icon: Users,
   },
   {
-    title: "Quest Completion",
-    value: "72%",
-    detail: "Travelers finishing curated routes",
-    icon: CircleCheckBig,
+    title: "Receive AI Quest",
+    description: "The platform generates a dynamic route based on opportunities and context.",
+    icon: Sparkles,
   },
   {
-    title: "Green Season Score",
-    value: "87",
-    detail: "Distribution health across low season",
-    icon: BarChart3,
+    title: "Visit Community",
+    description: "Travelers are guided toward local experiences outside the crowded center.",
+    icon: MapPinned,
   },
   {
-    title: "Economic Impact",
-    value: "4.8M THB",
-    detail: "Estimated local spending uplift",
-    icon: TrendingUp,
+    title: "Gain Reputation",
+    description: "Completion rewards create engagement and encourage more meaningful travel.",
+    icon: Award,
   },
 ];
 
-const roadmapPhases = [
+const roadmap = [
   {
     phase: "Phase 1",
-    title: "Tourist Experience",
-    description: "Launch the traveler-facing journey with persona onboarding and quests.",
-    icon: Compass,
+    title: "MVP",
+    description: "Launch the core traveler flow with persona selection and AI quests.",
   },
   {
     phase: "Phase 2",
     title: "Community Portal",
-    description: "Enable local partners to publish offers, stories, and availability.",
-    icon: Building2,
+    description: "Let local partners publish opportunities, experiences, and availability.",
   },
   {
     phase: "Phase 3",
     title: "Government Dashboard",
-    description: "Surface live distribution, impact, and seasonal tourism patterns.",
-    icon: ShieldCheck,
+    description: "Surface distribution, impact, and seasonal tourism insight for officials.",
+  },
+  {
+    phase: "Phase 4",
+    title: "Provincial Platform",
+    description: "Scale NAN FLOW into a broader tourism operating layer for the province.",
   },
 ];
 
@@ -122,82 +158,181 @@ function SectionHeading({
 export default function Home() {
   return (
     <main className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.16),transparent_34%),radial-gradient(circle_at_top_right,rgba(20,83,45,0.12),transparent_28%),linear-gradient(to_bottom,#f8fafc,#f8fafc)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-112 bg-[linear-gradient(135deg,rgba(220,252,231,0.85),rgba(255,255,255,0)_65%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.18),transparent_32%),radial-gradient(circle_at_top_right,rgba(20,83,45,0.18),transparent_28%),linear-gradient(to_bottom,#07140f_0%,#0b1f17_28%,#f8fafc_100%)]" />
 
       <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-20 px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
-        <section className="relative overflow-hidden rounded-[2rem] border border-emerald-950/10 bg-white/80 px-5 py-8 shadow-[0_30px_120px_rgba(15,118,110,0.08)] backdrop-blur sm:px-8 sm:py-12 lg:px-12 lg:py-16">
-          <div className="absolute -right-10 top-6 h-40 w-40 rounded-full bg-emerald-200/50 blur-3xl" />
-          <div className="absolute bottom-0 left-0 h-36 w-36 rounded-full bg-lime-200/50 blur-3xl" />
+        <section className="relative min-h-screen overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 px-5 py-6 shadow-[0_30px_120px_rgba(2,6,23,0.24)] backdrop-blur-xl sm:px-8 lg:px-12">
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,18,12,0.35),rgba(4,18,12,0.55)),radial-gradient(circle_at_50%_10%,rgba(34,197,94,0.24),transparent_45%)]" />
+          <div className="absolute inset-0 opacity-95">
+            <svg className="h-full w-full" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="mountainSky" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stopColor="#081712" />
+                  <stop offset="55%" stopColor="#123123" />
+                  <stop offset="100%" stopColor="#dff6e7" stopOpacity="0.1" />
+                </linearGradient>
+              </defs>
+              <rect width="1440" height="900" fill="url(#mountainSky)" />
+              <path d="M0 620L140 520L270 580L420 430L575 560L720 390L890 560L1040 450L1170 530L1440 360V900H0Z" fill="#0d251b" opacity="0.95" />
+              <path d="M0 700L180 610L330 660L520 520L700 630L910 500L1130 620L1260 560L1440 640V900H0Z" fill="#123726" opacity="0.92" />
+              <path d="M0 770L220 700L380 740L560 650L760 740L980 680L1170 730L1440 690V900H0Z" fill="#163e2d" opacity="0.9" />
+            </svg>
+          </div>
 
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-900 shadow-sm">
-                <span className="inline-flex size-2 rounded-full bg-emerald-600" />
-                NAN FLOW
-              </div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.18),transparent_32%),radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent_26%)]" />
 
-              <h1 className="mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-                Explore Beyond Seasons
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-                AI-powered tourism platform helping travelers discover local communities while supporting sustainable tourism in Nan.
-              </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button className="h-12 rounded-full bg-[#0F766E] px-6 text-sm font-semibold text-white shadow-lg shadow-emerald-700/20 transition-all duration-300 hover:scale-105 hover:bg-[#0b645d]">
-                  Start Journey
-                  <ArrowRight className="ml-2 size-4" />
-                </Button>
-                <Button variant="outline" className="h-12 rounded-full border-emerald-900/15 bg-white px-6 text-sm font-semibold text-slate-900 transition-all duration-300 hover:scale-105 hover:border-emerald-900/25 hover:bg-emerald-50">
-                  Government Dashboard
-                </Button>
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-3 text-sm text-slate-600">
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#DCFCE7] px-4 py-2">
-                  <Sparkles className="size-4 text-emerald-700" />
-                  Personalized quests
+          <div className="relative z-10 flex h-full flex-col">
+            <header className="mb-8 flex items-center justify-between rounded-full border border-white/15 bg-white/10 px-4 py-3 text-white shadow-[0_8px_40px_rgba(0,0,0,0.16)] backdrop-blur-md sm:px-6">
+              <div className="flex items-center gap-3">
+                <div className="flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/10">
+                  <span className="text-sm font-semibold tracking-[0.18em]">NF</span>
                 </div>
-                <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-emerald-950/8">
-                  <Leaf className="size-4 text-emerald-700" />
-                  Sustainable tourism impact
+                <div>
+                  <p className="text-sm font-medium text-emerald-50">NAN FLOW</p>
+                  <p className="text-xs text-white/60">Nan Beyond Seasons Hackathon</p>
                 </div>
               </div>
-            </div>
+              <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">
+                <span>Problem</span>
+                <span>Solution</span>
+                <span>Quest</span>
+                <span>Dashboard</span>
+              </nav>
+            </header>
 
-            <div className="relative z-10">
-              <Card className="overflow-hidden border-emerald-950/10 bg-slate-950 text-white shadow-[0_30px_120px_rgba(2,6,23,0.2)] transition-all duration-300 hover:scale-105">
-                <CardHeader className="gap-4 border-b border-white/10 bg-linear-to-br from-emerald-900 via-emerald-950 to-slate-950 p-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm text-emerald-100/80">Government insight</p>
-                      <CardTitle className="mt-1 text-2xl text-white">Live seasonal balance</CardTitle>
-                    </div>
-                    <div className="rounded-2xl bg-white/10 p-3">
-                      <Waves className="size-6 text-emerald-200" />
-                    </div>
+            <div className="grid flex-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="relative z-10 max-w-2xl text-white">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 shadow-sm backdrop-blur-md">
+                  <span className="inline-flex size-2 rounded-full bg-emerald-300" />
+                  AI-powered Tourism Beyond Seasons
+                </div>
+
+                <h1 className="mt-6 font-serif text-6xl font-semibold tracking-tight text-white sm:text-7xl lg:text-[5.5rem] lg:leading-none">
+                  NAN FLOW
+                </h1>
+
+                <p className="mt-5 max-w-2xl text-2xl leading-tight text-white/90 sm:text-3xl lg:text-4xl">
+                    Explore Beyond Seasons.
+                    <br />
+                    Empower Local Communities.
+                </p>
+
+                  <div className="mt-6 max-w-2xl text-sm leading-7 text-white/70 sm:text-base lg:text-lg">
+                    An AI-powered tourism platform that helps distribute travelers to local communities during the low and green season while providing measurable impact through a government dashboard.
+                </div>
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <Button className="h-12 rounded-full bg-[#0F766E] px-6 text-sm font-semibold text-white shadow-lg shadow-emerald-900/20 transition-all duration-300 hover:scale-105 hover:bg-[#0b645d]">
+                    Start Journey
+                    <ArrowRight className="ml-2 size-4" />
+                  </Button>
+                  <Button variant="outline" className="h-12 rounded-full border-white/20 bg-white/10 px-6 text-sm font-semibold text-white shadow-sm backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-white/15 hover:text-white">
+                    Explore Dynamic Quest
+                  </Button>
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 backdrop-blur-md">
+                    <Sparkles className="size-4 text-emerald-300" />
+                    AI-generated quests
                   </div>
-                  <CardDescription className="max-w-md text-emerald-50/80">
-                    Track where travelers go, which communities benefit, and how Green Season activity shifts across Nan.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="grid gap-4 p-6 sm:grid-cols-2">
-                  {dashboardMetrics.map((metric) => {
-                    const Icon = metric.icon;
-                    return (
-                      <div key={metric.title} className="rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/10">
-                        <div className="flex items-center justify-between gap-3">
-                          <p className="text-sm text-emerald-100/75">{metric.title}</p>
-                          <Icon className="size-4 text-emerald-200" />
-                        </div>
-                        <p className="mt-3 text-2xl font-semibold text-white">{metric.value}</p>
-                        <p className="mt-1 text-sm text-emerald-100/70">{metric.detail}</p>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 backdrop-blur-md">
+                    <Leaf className="size-4 text-emerald-300" />
+                    Community-first distribution
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative z-10">
+                <Card className="overflow-hidden border-white/15 bg-white/10 text-white shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur-xl transition-all duration-300 hover:scale-[1.02]">
+                  <CardHeader className="gap-4 border-b border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm text-emerald-50/70">AI assistant</p>
+                        <CardTitle className="mt-1 text-2xl text-white">Recommendation Preview</CardTitle>
                       </div>
-                    );
-                  })}
-                </CardContent>
-              </Card>
+                      <div className="rounded-2xl border border-white/10 bg-white/10 p-3 backdrop-blur-md">
+                        <Bot className="size-6 text-emerald-200" />
+                      </div>
+                    </div>
+                    <CardDescription className="max-w-md text-white/70">
+                      A live-style preview of what the AI recommends based on weather, crowding, and community opportunity.
+                    </CardDescription>
+                  </CardHeader>
+
+                  <CardContent className="space-y-4 p-6">
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <div className="rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+                        <div className="flex items-center gap-2 text-sm text-white/70">
+                          <CloudSun className="size-4" />
+                          Current Weather
+                        </div>
+                        <p className="mt-2 text-lg font-semibold text-white">Rainy</p>
+                      </div>
+                      <div className="rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+                        <div className="flex items-center gap-2 text-sm text-white/70">
+                          <MapPin className="size-4" />
+                          Crowded Area
+                        </div>
+                        <p className="mt-2 text-lg font-semibold text-white">Nan City</p>
+                      </div>
+                    </div>
+
+                    <div className="rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+                      <p className="text-sm text-white/70">AI Recommendation</p>
+                      <div className="mt-3 space-y-3">
+                        <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                          <div className="flex items-center justify-between gap-3">
+                            <div>
+                              <p className="font-semibold text-white">Morning Trail Run</p>
+                              <p className="text-sm text-white/70">Weather: Cloudy · Location: Pua District</p>
+                            </div>
+                            <span className="rounded-full bg-emerald-300/15 px-3 py-1 text-xs font-semibold text-emerald-200">
+                              96% match
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                          <div className="flex items-center justify-between gap-3">
+                            <div>
+                              <p className="font-semibold text-white">Coffee Workshop</p>
+                              <p className="text-sm text-white/70">Opportunity: High</p>
+                            </div>
+                            <span className="rounded-full bg-emerald-300/15 px-3 py-1 text-xs font-semibold text-emerald-200">
+                              High
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                          <div className="flex items-center justify-between gap-3">
+                            <div>
+                              <p className="font-semibold text-white">Handcraft Experience</p>
+                              <p className="text-sm text-white/70">Reward: Reputation +25</p>
+                            </div>
+                            <span className="rounded-full bg-emerald-300/15 px-3 py-1 text-xs font-semibold text-emerald-200">
+                              +25
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      <span className="rounded-full bg-[#DCFCE7] px-3 py-1 text-xs font-semibold text-emerald-900">
+                        Community-first
+                      </span>
+                      <span className="rounded-full bg-[#DCFCE7] px-3 py-1 text-xs font-semibold text-emerald-900">
+                        Dynamic Quest AI
+                      </span>
+                      <span className="rounded-full bg-[#DCFCE7] px-3 py-1 text-xs font-semibold text-emerald-900">
+                        Opportunity scoring
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>
@@ -205,20 +340,21 @@ export default function Home() {
         <section className="space-y-8">
           <SectionHeading
             eyebrow="Problem"
-            title="Tourism demand is uneven, seasonal, and hard to act on"
-            description="NAN FLOW addresses the visibility gap between travelers, local communities, and government teams with a simple AI-driven distribution layer."
+            title="The Challenge"
+            description="Nan’s tourism pattern is uneven, so the landing page should show the issue immediately and simply."
           />
 
           <div className="grid gap-4 md:grid-cols-3">
-            {problemCards.map((card) => {
+            {challengeCards.map((card) => {
               const Icon = card.icon;
               return (
-                <Card key={card.title} className="group h-full transition-all duration-300 hover:scale-105 hover:shadow-[0_24px_70px_rgba(15,118,110,0.12)]">
+                <Card key={card.title} className="group border-white/15 bg-white/10 text-white shadow-[0_24px_70px_rgba(2,6,23,0.18)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/15">
                   <CardHeader className="p-6">
-                    <div className="flex size-12 items-center justify-center rounded-2xl bg-[#DCFCE7] text-[#0F766E] transition-all duration-300 group-hover:bg-[#0F766E] group-hover:text-white">
+                    <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-emerald-200 backdrop-blur-md transition-all duration-300 group-hover:bg-white/15">
                       <Icon className="size-5" />
                     </div>
-                    <CardTitle className="mt-5 text-xl text-slate-950">{card.title}</CardTitle>
+                    <CardTitle className="mt-5 text-xl text-white">{card.title}</CardTitle>
+                    <CardDescription className="text-white/70">{card.description}</CardDescription>
                   </CardHeader>
                 </Card>
               );
@@ -229,24 +365,24 @@ export default function Home() {
         <section className="space-y-8">
           <SectionHeading
             eyebrow="Solution"
-            title="How NAN FLOW works"
-            description="A lightweight flow that turns traveler intent into better distribution, stronger community income, and clearer impact tracking."
+            title="How NAN FLOW Works"
+            description="AI-powered Dynamic Quest distributes travelers into local communities through a clear flow."
           />
 
-          <Card className="overflow-hidden border-emerald-950/10 bg-linear-to-br from-white to-emerald-50/70">
-            <CardContent className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-center lg:gap-4">
-              {solutionSteps.map((step, index) => (
+          <Card className="border-white/15 bg-white/10 shadow-[0_24px_70px_rgba(2,6,23,0.18)] backdrop-blur-xl">
+            <CardContent className="grid gap-4 p-6 sm:p-8 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-center">
+              {[
+                "Traveler Persona",
+                "AI Recommendation",
+                "Dynamic Quest",
+                "Community Impact",
+              ].map((step, index) => (
                 <div key={step} className="flex items-center gap-4">
-                  <div className="flex min-h-24 flex-1 items-center rounded-3xl border border-emerald-950/10 bg-white p-5 shadow-sm transition-all duration-300 hover:scale-105">
-                    <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-700">
-                        Step {index + 1}
-                      </p>
-                      <p className="mt-2 text-lg font-semibold text-slate-950">{step}</p>
-                    </div>
+                  <div className="flex min-h-24 flex-1 items-center rounded-3xl border border-white/10 bg-white/10 p-5 text-white shadow-sm backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-white/15">
+                    <p className="text-lg font-semibold">{step}</p>
                   </div>
-                  {index < solutionSteps.length - 1 ? (
-                    <div className="hidden items-center justify-center text-emerald-700 lg:flex">
+                  {index < 3 ? (
+                    <div className="hidden items-center justify-center text-emerald-100/80 lg:flex">
                       <ChevronDown className="size-6 rotate-90 lg:rotate-0" />
                     </div>
                   ) : null}
@@ -258,91 +394,51 @@ export default function Home() {
 
         <section className="space-y-8">
           <SectionHeading
-            eyebrow="Persona Preview"
-            title="Four traveler personas, one adaptive engine"
-            description="The same platform feels different for each traveler, while staying aligned with local community opportunity."
+            eyebrow="User Journey"
+            title="A traveler’s path from discovery to reward"
+            description="The journey cards keep the story concrete for judges and easy to scan on mobile."
           />
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {personas.map((persona) => (
-              <Card key={persona.title} className="group transition-all duration-300 hover:scale-105 hover:border-emerald-900/20 hover:shadow-[0_24px_70px_rgba(15,118,110,0.12)]">
-                <CardHeader className="p-6">
-                  <div className="flex size-14 items-center justify-center rounded-3xl bg-[#DCFCE7] text-3xl transition-all duration-300 group-hover:rotate-6 group-hover:scale-105">
-                    {persona.icon}
-                  </div>
-                  <CardTitle className="mt-5 text-xl text-slate-950">{persona.title}</CardTitle>
-                  <CardDescription>{persona.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
+            {journeySteps.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Card key={item.title} className="group border-white/15 bg-white/10 text-white shadow-[0_24px_70px_rgba(2,6,23,0.18)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/15">
+                  <CardHeader className="p-6">
+                    <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-emerald-200 backdrop-blur-md transition-all duration-300 group-hover:bg-white/15">
+                      <Icon className="size-5" />
+                    </div>
+                    <CardTitle className="mt-5 text-xl text-white">{item.title}</CardTitle>
+                    <CardDescription className="text-white/70">{item.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              );
+            })}
           </div>
         </section>
 
         <section className="space-y-8">
           <SectionHeading
-            eyebrow="Dashboard Preview"
-            title="Government-ready data snapshots"
-            description="Use mock metrics to illustrate tourism flow, economic benefits, and quest engagement without any API wiring."
-          />
-
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {dashboardMetrics.map((metric) => {
-              const Icon = metric.icon;
-              return (
-                <Card key={metric.title} className="transition-all duration-300 hover:scale-105 hover:shadow-[0_24px_70px_rgba(15,118,110,0.12)]">
-                  <CardHeader className="p-6">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <CardDescription className="text-sm font-medium text-slate-500">{metric.title}</CardDescription>
-                        <CardTitle className="mt-3 text-3xl text-slate-950">{metric.value}</CardTitle>
-                      </div>
-                      <div className="rounded-2xl bg-[#DCFCE7] p-3 text-[#0F766E]">
-                        <Icon className="size-5" />
-                      </div>
-                    </div>
-                    <p className="text-sm text-slate-600">{metric.detail}</p>
-                  </CardHeader>
-                </Card>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="space-y-8 pb-6">
-          <SectionHeading
-            eyebrow="Roadmap"
-            title="From tourist app to city platform"
-            description="A staged rollout that keeps the experience simple now while leaving room to expand across future destinations."
+            eyebrow="Future Roadmap"
+            title="From MVP to provincial platform"
+            description="The roadmap keeps the hackathon scope clear while suggesting the next steps after launch."
           />
 
           <div className="grid gap-4 lg:grid-cols-4">
-            {roadmapPhases.map((phase, index) => {
-              const Icon = phase.icon;
-              return (
-                <Card key={phase.title} className="group transition-all duration-300 hover:scale-105 hover:shadow-[0_24px_70px_rgba(15,118,110,0.12)]">
-                  <CardHeader className="p-6">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-700">
-                        {phase.phase}
-                      </p>
-                      <div className="rounded-2xl bg-[#DCFCE7] p-3 text-[#0F766E] transition-all duration-300 group-hover:bg-[#0F766E] group-hover:text-white">
-                        <Icon className="size-5" />
-                      </div>
-                    </div>
-                    <CardTitle className="mt-5 text-xl text-slate-950">{phase.title}</CardTitle>
-                    <CardDescription>{phase.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="px-6 pb-6">
-                    <div className="flex items-center gap-2 text-sm font-medium text-slate-600">
-                      <span className="inline-flex size-6 items-center justify-center rounded-full bg-emerald-100 text-xs text-emerald-900">
-                        {index + 1}
-                      </span>
-                      Strategic release
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+            {roadmap.map((item, index) => (
+              <Card key={item.title} className="group border-white/15 bg-white/10 text-white shadow-[0_24px_70px_rgba(2,6,23,0.18)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/15">
+                <CardHeader className="p-6">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-100/80">{item.phase}</p>
+                    <span className="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/10 text-sm font-semibold text-white/90 backdrop-blur-md">
+                      {index + 1}
+                    </span>
+                  </div>
+                  <CardTitle className="mt-5 text-xl text-white">{item.title}</CardTitle>
+                  <CardDescription className="text-white/70">{item.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
           </div>
         </section>
 

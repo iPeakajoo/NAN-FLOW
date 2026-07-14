@@ -14,23 +14,23 @@ import { Button } from "@/components/ui/button"
 
 const insightItems = [
   {
-    label: "Community match",
+    label: "AI match",
     value: "96%",
     icon: Sparkles,
   },
   {
-    label: "Opportunity route",
-    value: "Pua",
+    label: "Impact measured",
+    value: "86",
     icon: MapPinned,
   },
   {
-    label: "Local impact",
+    label: "More local visits",
     value: "+24%",
     icon: BarChart3,
   },
 ]
 
-const routeStops = ["Nan City", "Pua Coffee", "Forest Trail", "Craft Village"]
+const routeStops = ["Nan City", "Pua", "Forest", "Craft"]
 
 export default function Hero() {
   return (
@@ -45,11 +45,14 @@ export default function Hero() {
             <span className="flex size-6 items-center justify-center rounded-full bg-emerald-50">
               <Leaf className="size-3.5 text-[#10B981]" />
             </span>
-            AI tourism distribution for Nan
+            AI recommends destinations. Communities gain visitors.
           </div>
 
           <p className="mt-9 text-sm font-bold uppercase tracking-[0.28em] text-[#0F766E]">
             NAN FLOW
+          </p>
+          <p className="mt-3 text-sm font-semibold text-gray-500">
+            AI-powered Tourism Distribution Platform
           </p>
           <h1 className="mt-4 max-w-5xl text-6xl font-bold leading-[0.95] tracking-tight text-gray-950 sm:text-7xl lg:text-8xl">
             Explore Beyond
@@ -58,9 +61,8 @@ export default function Hero() {
             </span>
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-600 sm:text-xl">
-            An AI-powered tourism platform that guides travelers into local
-            communities, balances low-season demand, and gives government teams
-            measurable impact data.
+            Helping travelers discover hidden communities while enabling
+            governments to distribute tourism more sustainably.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -77,7 +79,7 @@ export default function Hero() {
           </div>
 
           <div className="mt-12 grid max-w-2xl grid-cols-3 gap-3">
-            {["Green Season", "AI Routes", "Local Impact"].map((item) => (
+            {["🌿 Green Season", "🤖 AI Recommendation", "📊 Government KPI"].map((item) => (
               <div
                 key={item}
                 className="rounded-xl bg-white/70 px-4 py-3 text-sm font-semibold text-gray-700 shadow-sm ring-1 ring-gray-950/5 backdrop-blur"
@@ -97,6 +99,13 @@ export default function Hero() {
               <div className="absolute bottom-12 left-0 h-44 w-full bg-[#0F766E]/30 [clip-path:polygon(0_54%,18%_24%,34%_44%,52%_10%,72%_42%,100%_26%,100%_100%,0_100%)]" />
               <div className="absolute bottom-0 left-0 h-36 w-full bg-white/78 [clip-path:polygon(0_44%,18%_36%,35%_50%,50%_38%,70%_55%,100%_42%,100%_100%,0_100%)]" />
 
+              <div className="absolute left-5 top-28 rounded-2xl bg-white/86 p-3 shadow-[0_16px_40px_rgba(15,23,42,0.10)] ring-1 ring-gray-950/5 backdrop-blur-xl sm:left-7">
+                <p className="text-xs font-bold text-gray-950">☔ Rain Today</p>
+                <p className="mt-1 text-xs font-semibold text-[#0F766E]">
+                  Perfect Time to Visit Pua
+                </p>
+              </div>
+
               <div className="absolute left-5 top-5 rounded-2xl bg-white/82 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.10)] ring-1 ring-gray-950/5 backdrop-blur-xl sm:left-7 sm:top-7">
                 <div className="flex items-center gap-3">
                   <span className="flex size-11 items-center justify-center rounded-xl bg-[#0F766E] text-white">
@@ -104,10 +113,10 @@ export default function Hero() {
                   </span>
                   <div>
                     <p className="text-sm font-bold text-gray-950">
-                      AI route engine
+                      AI recommends next stop
                     </p>
                     <p className="text-xs font-medium text-gray-500">
-                      Weather, season, opportunity
+                      Persona, weather, community need
                     </p>
                   </div>
                 </div>
@@ -116,7 +125,7 @@ export default function Hero() {
               <div className="absolute right-5 top-24 w-44 rounded-2xl bg-white/82 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.10)] ring-1 ring-gray-950/5 backdrop-blur-xl sm:right-7">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
-                    Signal
+                    Impact
                   </p>
                   <Gauge className="size-4 text-[#10B981]" />
                 </div>
@@ -124,7 +133,7 @@ export default function Hero() {
                   86
                 </p>
                 <p className="mt-1 text-xs font-medium text-gray-500">
-                  Opportunity score
+                  Government score
                 </p>
               </div>
 
@@ -136,14 +145,14 @@ export default function Hero() {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-sm font-medium text-emerald-100/80">
-                      Recommended quest
+                      Today&apos;s AI Journey
                     </p>
                     <h2 className="mt-2 text-2xl font-bold tracking-tight">
                       Village Coffee Trail
                     </h2>
                     <p className="mt-2 text-sm leading-6 text-white/64">
-                      Shift travelers from crowded city stops into local farms,
-                      guides, cafes, and craft communities.
+                      Recommended to increase visits for local farms, guides,
+                      cafes, and craft communities.
                     </p>
                   </div>
                   <span className="hidden rounded-full bg-[#10B981]/20 px-3 py-1 text-sm font-semibold text-emerald-100 sm:inline-flex">
@@ -163,9 +172,24 @@ export default function Hero() {
                     </div>
                   ))}
                 </div>
+
+                <div className="mt-5 flex items-end justify-between rounded-xl bg-white/10 p-3 ring-1 ring-white/10">
+                  <div>
+                    <p className="text-xs font-medium text-white/56">
+                      Estimated Spending
+                    </p>
+                    <p className="mt-1 text-xl font-bold tracking-tight text-white">
+                      1,850 THB
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs font-medium text-emerald-100/60">Impact</p>
+                    <p className="mt-1 text-2xl font-bold text-[#10B981]">↓ +72%</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="absolute bottom-48 left-5 right-5 grid gap-3 sm:grid-cols-3">
+              <div className="absolute bottom-72 left-5 right-5 grid gap-3 sm:grid-cols-3">
                 {insightItems.map((item) => {
                   const Icon = item.icon
 
@@ -186,10 +210,10 @@ export default function Hero() {
                 })}
               </div>
 
-              <div className="absolute left-7 top-32 hidden rounded-2xl bg-white/72 p-3 shadow-[0_14px_32px_rgba(15,23,42,0.08)] ring-1 ring-gray-950/5 backdrop-blur-xl sm:block">
+              <div className="absolute left-7 top-44 hidden w-52 rounded-2xl bg-white/72 p-3 shadow-[0_14px_32px_rgba(15,23,42,0.08)] ring-1 ring-gray-950/5 backdrop-blur-xl sm:block">
                 <div className="flex items-center gap-2 text-xs font-bold text-[#0F766E]">
                   <TrendingUp className="size-4" />
-                  Low-season lift
+                  AI matched 96% Lifestyle Traveler
                 </div>
               </div>
 

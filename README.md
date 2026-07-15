@@ -58,11 +58,11 @@ https://nan-flow.vercel.app/
 
 ## 📸 Screenshots
 
-Landing Page
-
-Traveler Dashboard
-
-Government Dashboard
+<p align="center">
+  <img src="Landing Page.png" width="18%" />
+  <img src="Traveler Dashboard.png" width="18%" />
+  <img src="Goverment Dashboard.png" width="18%" />
+</p>
 
 ---
 

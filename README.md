@@ -108,6 +108,10 @@ src
 - Thai / English Support
 
 ## 🚀 Future Features Coding
+
+phase 1
+pwa ที่สามารถแสดงผลบนมือถือ เพื่อเข้าถึงทุก feature
+
 Phase 2
 Community Portal
 ร้านค้าสร้างโปรโมชั่นเอง

@@ -107,6 +107,24 @@ src
 - Government Analytics
 - Thai / English Support
 
+## 🚀 Future Features Coding
+Phase 2
+Community Portal
+ร้านค้าสร้างโปรโมชั่นเอง
+
+Phase 3
+Virtual Run
+เชื่อม Smartwatch
+วิ่งในโรงแรมช่วงฝนตก
+ได้คะแนน
+ได้ Quest
+
+Phase 4
+Marketplace
+Community Rewards
+Legacy
+Digital Passport
+
 ---
 
 ## 👥 Team
@@ -114,6 +132,7 @@ src
 Hackathon Project
 
 NAN FLOW Team
+สุดเขตต์ พิทักษ์พลางกูร
 
 ---
 

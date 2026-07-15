@@ -4,7 +4,7 @@
 
 NAN FLOW is an AI-powered tourism platform designed to distribute travelers from crowded attractions to local communities, creating a more sustainable tourism ecosystem.
 
-![Landing Page](<img src="Landing Page.png" width="18%" />)
+<img src="Landing Page.png" width="18%" />
 
 ---
 

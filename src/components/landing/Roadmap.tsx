@@ -1,10 +1,9 @@
 "use client"
 
 import {
+  Activity,
   ArrowRight,
-  BarChart3,
   Building2,
-  Globe2,
   ShoppingBag,
   Smartphone,
 } from "lucide-react"
@@ -18,7 +17,7 @@ import {
 } from "@/components/ui/card"
 import { useLanguage } from "@/contexts/LanguageContext"
 
-const phaseIcons = [Smartphone, Building2, BarChart3, Globe2]
+const phaseIcons = [Smartphone, Building2, Activity, ShoppingBag]
 
 const statusClasses = [
   "bg-emerald-50 text-[#0F766E] ring-emerald-900/10",

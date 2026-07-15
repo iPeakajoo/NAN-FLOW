@@ -52,7 +52,7 @@ https://nan-flow.vercel.app/
 
 🎥 Demo Video
 
-(YouTube Link)
+[(YouTube Link)](https://www.youtube.com/watch?v=JXKO2V0Yvew)
 
 ---
 
